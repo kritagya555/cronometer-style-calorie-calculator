@@ -8,7 +8,7 @@ interface RecipeCreatorProps {
   onSave: (food: Omit<FoodEntry, 'id' | 'timestamp' | 'servingSize'>) => void;
 }
 
-type Unit = 'g' | 'kg' | 'ml' | 'l' | 'tbsp' | 'slice' | 'piece';
+type Unit = 'g' | 'kg' | 'ml' | 'l' | 'tbsp' | 'slice' | 'piece' | 'cup';
 
 interface IngredientEntry {
   name: string;
@@ -32,12 +32,13 @@ export const RecipeCreator: React.FC<RecipeCreatorProps> = ({ onSave }) => {
       case 'kg': return amount * 10;
       case 'l': return amount * 10;
       case 'tbsp': return (amount * 15) / 100;
+      case 'cup': return (amount * 160) / 100; // 1 cup approx 160g/ml
       case 'slice': 
       case 'piece': 
         return (amount * (sliceWeight || 100)) / 100; // default 100g if no weight
       case 'g': 
       case 'ml': return amount / 100;
-      default: return amount; // For direct piece/serving items
+      default: return amount;
     }
   };
 
@@ -92,12 +93,12 @@ export const RecipeCreator: React.FC<RecipeCreatorProps> = ({ onSave }) => {
   return (
     <div className="space-y-6">
       <div>
-        <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Recipe Name</label>
+        <label className="block text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">Recipe Name</label>
         <input 
           value={recipeName}
           onChange={(e) => setRecipeName(e.target.value)}
           placeholder="e.g. My Special Khichdi"
-          className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:ring-2 focus:ring-emerald-500"
+          className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white dark:placeholder-slate-600 font-bold"
         />
       </div>
 
@@ -152,6 +153,7 @@ export const RecipeCreator: React.FC<RecipeCreatorProps> = ({ onSave }) => {
                     <option value="kg">kg</option>
                     <option value="tbsp">tbsp</option>
                     <option value="piece">piece</option>
+                    <option value="cup">cup</option>
                     {ing.sliceWeight && <option value="slice">slice</option>}
                   </>
                 ) : (
@@ -160,6 +162,7 @@ export const RecipeCreator: React.FC<RecipeCreatorProps> = ({ onSave }) => {
                     <option value="l">l</option>
                     <option value="tbsp">tbsp</option>
                     <option value="piece">piece</option>
+                    <option value="cup">cup</option>
                   </>
                 )}
               </select>
