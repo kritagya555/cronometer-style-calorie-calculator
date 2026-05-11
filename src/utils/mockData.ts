@@ -1,4 +1,6 @@
-export const INDIAN_CUISINE = [
+import { DBFoodItem } from '../types';
+
+export const INDIAN_CUISINE: DBFoodItem[] = [
   // Breakfast
   { name: 'Idli (2 pieces)', calories: 120, protein: 4, carbs: 24, fat: 0.4, category: 'Breakfast' },
   { name: 'Sambar (1 cup)', calories: 150, protein: 6, carbs: 18, fat: 6, category: 'Breakfast' },
@@ -9,6 +11,7 @@ export const INDIAN_CUISINE = [
   { name: 'Paratha (Aloo, 1 medium)', calories: 290, protein: 5, carbs: 45, fat: 10, category: 'Breakfast' },
   { name: 'Puri (1 medium)', calories: 100, protein: 1.5, carbs: 12, fat: 5, category: 'Breakfast' },
   { name: 'Dhokla (3 pieces)', calories: 160, protein: 8, carbs: 25, fat: 5, category: 'Breakfast' },
+
 
   // Breads
   { name: 'Roti (Phulka, 1 medium)', calories: 75, protein: 2.5, carbs: 15, fat: 0.5, category: 'Breads' },

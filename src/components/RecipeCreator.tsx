@@ -2,13 +2,13 @@
 import React, { useState } from 'react';
 import { Minus, Calculator, Save } from 'lucide-react';
 import { RAW_INGREDIENTS, INDIAN_CUISINE } from '../utils/mockData';
-import { FoodEntry } from '../types';
+import { FoodEntry, DBFoodItem } from '../types';
 
 interface RecipeCreatorProps {
-  onSave: (food: Omit<FoodEntry, 'id' | 'timestamp'>) => void;
+  onSave: (food: Omit<FoodEntry, 'id' | 'timestamp' | 'servingSize'>) => void;
 }
 
-type Unit = 'g' | 'kg' | 'ml' | 'l' | 'tbsp' | 'slice';
+type Unit = 'g' | 'kg' | 'ml' | 'l' | 'tbsp' | 'slice' | 'piece';
 
 interface IngredientEntry {
   name: string;
@@ -29,19 +29,24 @@ export const RecipeCreator: React.FC<RecipeCreatorProps> = ({ onSave }) => {
 
   const getMultiplier = (amount: number, unit: Unit, sliceWeight?: number): number => {
     switch (unit) {
-      case 'kg': return amount * 10; // since base is per 100g
+      case 'kg': return amount * 10;
       case 'l': return amount * 10;
-      case 'tbsp': return (amount * 15) / 100; // 1 tbsp approx 15g/ml
-      case 'slice': return (amount * (sliceWeight || 30)) / 100; // default 30g if not specified
+      case 'tbsp': return (amount * 15) / 100;
+      case 'slice': 
+      case 'piece': 
+        return (amount * (sliceWeight || 100)) / 100; // default 100g if no weight
       case 'g': 
       case 'ml': return amount / 100;
-      default: return amount / 100;
+      default: return amount; // For direct piece/serving items
     }
   };
 
-  const ALL_MOCK_DATA = [...RAW_INGREDIENTS, ...INDIAN_CUISINE.map(i => ({ ...i, baseUnit: 'g' as const }))];
+  const ALL_MOCK_DATA: DBFoodItem[] = [
+    ...RAW_INGREDIENTS, 
+    ...INDIAN_CUISINE.map(i => ({ ...i, baseUnit: i.baseUnit || ('g' as const) }))
+  ];
 
-  const addIngredient = (ing: any) => {
+  const addIngredient = (ing: DBFoodItem) => {
     setIngredients(prev => [...prev, { 
       name: ing.name, 
       amount: 100, 
@@ -59,16 +64,16 @@ export const RecipeCreator: React.FC<RecipeCreatorProps> = ({ onSave }) => {
   const updateIngredient = (index: number, amount: number, unit: Unit) => {
     const updated = [...ingredients];
     const baseIng = ALL_MOCK_DATA.find(i => i.name === updated[index].name)!;
-    const multiplier = getMultiplier(amount, unit, (baseIng as any).sliceWeight);
+    const multiplier = getMultiplier(amount, unit, baseIng.sliceWeight);
     
     updated[index] = {
       ...updated[index],
       amount,
       unit,
-      cals: (baseIng as any).calories * multiplier,
-      p: (baseIng as any).protein * multiplier,
-      c: (baseIng as any).carbs * multiplier,
-      f: (baseIng as any).fat * multiplier
+      cals: baseIng.calories * multiplier,
+      p: baseIng.protein * multiplier,
+      c: baseIng.carbs * multiplier,
+      f: baseIng.fat * multiplier
     };
     setIngredients(updated);
   };
@@ -146,6 +151,7 @@ export const RecipeCreator: React.FC<RecipeCreatorProps> = ({ onSave }) => {
                     <option value="g">gm</option>
                     <option value="kg">kg</option>
                     <option value="tbsp">tbsp</option>
+                    <option value="piece">piece</option>
                     {ing.sliceWeight && <option value="slice">slice</option>}
                   </>
                 ) : (
@@ -153,6 +159,7 @@ export const RecipeCreator: React.FC<RecipeCreatorProps> = ({ onSave }) => {
                     <option value="ml">ml</option>
                     <option value="l">l</option>
                     <option value="tbsp">tbsp</option>
+                    <option value="piece">piece</option>
                   </>
                 )}
               </select>
@@ -198,7 +205,6 @@ export const RecipeCreator: React.FC<RecipeCreatorProps> = ({ onSave }) => {
           protein: totals.protein,
           carbs: totals.carbs,
           fat: totals.fat,
-          servingSize: '1 recipe',
           category: 'Custom'
         })}
         className="w-full bg-slate-900 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 disabled:opacity-30 transition-opacity"

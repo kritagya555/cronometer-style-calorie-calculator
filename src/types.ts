@@ -14,18 +14,21 @@ export interface MacroNutrients {
   fat: number;
 }
 
-export interface FoodEntry {
-  id: string;
+export interface DBFoodItem {
   name: string;
   calories: number;
   protein: number;
   carbs: number;
   fat: number;
-  servingSize: string;
-  timestamp: number;
   category?: string;
   baseUnit?: 'g' | 'ml';
   sliceWeight?: number;
+}
+
+export interface FoodEntry extends DBFoodItem {
+  id: string;
+  servingSize: string;
+  timestamp: number;
 }
 
 export interface ExerciseEntry {
