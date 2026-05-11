@@ -57,6 +57,7 @@ function App() {
   const [isFoodModalOpen, setIsFoodModalOpen] = useState(false);
   const [isExerciseModalOpen, setIsExerciseModalOpen] = useState(false);
   const [isRecipeModalOpen, setIsRecipeModalOpen] = useState(false);
+  const [isCustomFoodModalOpen, setIsCustomFoodModalOpen] = useState(false);
   const [exerciseForm, setExerciseForm] = useState({ name: '', duration: 30, calories: 0 });
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState('diary');
@@ -320,15 +321,24 @@ function App() {
       >
         <div className="space-y-4">
           <div className="flex gap-2 mb-4">
-             <button className="flex-1 py-2 bg-emerald-600 text-white rounded-xl text-xs font-bold shadow-lg shadow-emerald-100 dark:shadow-none">Database</button>
+             <button className="flex-1 py-2 bg-emerald-600 text-white rounded-xl text-[10px] font-black uppercase shadow-lg shadow-emerald-100 dark:shadow-none">Database</button>
              <button 
                onClick={() => {
                  setIsFoodModalOpen(false);
                  setIsRecipeModalOpen(true);
                }}
-               className="flex-1 py-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-xl text-xs font-bold"
+               className="flex-1 py-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-xl text-[10px] font-black uppercase"
              >
                Recipe Creator
+             </button>
+             <button 
+               onClick={() => {
+                 setIsFoodModalOpen(false);
+                 setIsCustomFoodModalOpen(true);
+               }}
+               className="flex-1 py-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-xl text-[10px] font-black uppercase"
+             >
+               Quick Log
              </button>
           </div>
           <div className="relative">
@@ -491,6 +501,59 @@ function App() {
           setFoodEntries([...foodEntries, newEntry]);
           setIsRecipeModalOpen(false);
         }} />
+      </Modal>
+
+      <Modal 
+        isOpen={isCustomFoodModalOpen} 
+        onClose={() => setIsCustomFoodModalOpen(false)} 
+        title="Quick Custom Log"
+      >
+        <form 
+          onSubmit={(e) => {
+            e.preventDefault();
+            const fd = new FormData(e.currentTarget);
+            const entry: FoodEntry = {
+              id: Math.random().toString(36).substr(2, 9),
+              name: fd.get('name') as string,
+              calories: parseInt(fd.get('calories') as string),
+              protein: parseInt(fd.get('protein') as string || '0'),
+              carbs: parseInt(fd.get('carbs') as string || '0'),
+              fat: parseInt(fd.get('fat') as string || '0'),
+              servingSize: 'Custom',
+              timestamp: selectedDate.getTime(),
+              category: 'Custom'
+            };
+            setFoodEntries([...foodEntries, entry]);
+            setIsCustomFoodModalOpen(false);
+          }}
+          className="space-y-4"
+        >
+          <div>
+            <label className="block text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Food Name</label>
+            <input name="name" required placeholder="e.g. My Secret Shake" className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white" />
+          </div>
+          <div>
+            <label className="block text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Calories (kcal)</label>
+            <input name="calories" type="number" required placeholder="0" className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white font-black" />
+          </div>
+          <div className="grid grid-cols-3 gap-3">
+            <div>
+              <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 text-center">Protein (g)</label>
+              <input name="protein" type="number" placeholder="0" className="w-full px-3 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white text-center" />
+            </div>
+            <div>
+              <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 text-center">Carbs (g)</label>
+              <input name="carbs" type="number" placeholder="0" className="w-full px-3 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white text-center" />
+            </div>
+            <div>
+              <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 text-center">Fat (g)</label>
+              <input name="fat" type="number" placeholder="0" className="w-full px-3 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white text-center" />
+            </div>
+          </div>
+          <button type="submit" className="w-full bg-emerald-600 text-white py-4 rounded-2xl font-black shadow-lg shadow-emerald-100 dark:shadow-none active:scale-95 transition-all mt-2">
+            LOG CUSTOM FOOD
+          </button>
+        </form>
       </Modal>
 
       <Modal 

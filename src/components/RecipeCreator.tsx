@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Minus, Calculator, Save } from 'lucide-react';
-import { RAW_INGREDIENTS } from '../utils/mockData';
+import { RAW_INGREDIENTS, INDIAN_CUISINE } from '../utils/mockData';
 import { FoodEntry } from '../types';
 
 interface RecipeCreatorProps {
@@ -39,13 +39,15 @@ export const RecipeCreator: React.FC<RecipeCreatorProps> = ({ onSave }) => {
     }
   };
 
-  const addIngredient = (ing: typeof RAW_INGREDIENTS[0]) => {
+  const ALL_MOCK_DATA = [...RAW_INGREDIENTS, ...INDIAN_CUISINE.map(i => ({ ...i, baseUnit: 'g' as const }))];
+
+  const addIngredient = (ing: any) => {
     setIngredients(prev => [...prev, { 
       name: ing.name, 
       amount: 100, 
-      unit: ing.baseUnit as Unit,
-      baseUnit: ing.baseUnit,
-      sliceWeight: (ing as any).sliceWeight,
+      unit: (ing.baseUnit || 'g') as Unit,
+      baseUnit: ing.baseUnit || 'g',
+      sliceWeight: ing.sliceWeight,
       cals: ing.calories, 
       p: ing.protein, 
       c: ing.carbs, 
@@ -56,17 +58,17 @@ export const RecipeCreator: React.FC<RecipeCreatorProps> = ({ onSave }) => {
 
   const updateIngredient = (index: number, amount: number, unit: Unit) => {
     const updated = [...ingredients];
-    const baseIng = RAW_INGREDIENTS.find(i => i.name === updated[index].name)!;
+    const baseIng = ALL_MOCK_DATA.find(i => i.name === updated[index].name)!;
     const multiplier = getMultiplier(amount, unit, (baseIng as any).sliceWeight);
     
     updated[index] = {
       ...updated[index],
       amount,
       unit,
-      cals: baseIng.calories * multiplier,
-      p: baseIng.protein * multiplier,
-      c: baseIng.carbs * multiplier,
-      f: baseIng.fat * multiplier
+      cals: (baseIng as any).calories * multiplier,
+      p: (baseIng as any).protein * multiplier,
+      c: (baseIng as any).carbs * multiplier,
+      f: (baseIng as any).fat * multiplier
     };
     setIngredients(updated);
   };
@@ -100,18 +102,19 @@ export const RecipeCreator: React.FC<RecipeCreatorProps> = ({ onSave }) => {
           <input 
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search raw ingredients..."
+            placeholder="Search raw or prepared foods..."
             className="w-full px-4 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none dark:text-white"
           />
           {search && (
             <div className="absolute top-full left-0 right-0 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 mt-1 rounded-xl shadow-xl z-20 max-h-40 overflow-y-auto">
-              {RAW_INGREDIENTS.filter(i => i.name.toLowerCase().includes(search.toLowerCase())).map(ing => (
+              {ALL_MOCK_DATA.filter(i => i.name.toLowerCase().includes(search.toLowerCase())).map((ing: any) => (
                 <button 
                   key={ing.name}
                   onClick={() => addIngredient(ing)}
                   className="w-full p-3 text-left hover:bg-emerald-50 dark:hover:bg-emerald-900/20 text-sm border-b border-slate-50 dark:border-slate-700 last:border-0 dark:text-slate-300"
                 >
-                  {ing.name} <span className="text-slate-400 text-xs">({ing.baseUnit})</span>
+                  <div className="font-bold">{ing.name}</div>
+                  <div className="text-[10px] text-slate-400 uppercase tracking-widest">{ing.category || 'Raw'} • {ing.baseUnit}</div>
                 </button>
               ))}
             </div>
