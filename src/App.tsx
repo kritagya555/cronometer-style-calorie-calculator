@@ -15,7 +15,8 @@ import { format, addDays, subDays, isSameDay } from 'date-fns';
 import { 
   UserStats, 
   FoodEntry, 
-  ExerciseEntry 
+  ExerciseEntry,
+  DBFoodItem
 } from './types';
 import { calculateTDEE, calculateMacroGoals } from './utils/calculations';
 import { INDIAN_CUISINE, EXERCISE_MET } from './utils/mockData';
@@ -44,6 +45,11 @@ function App() {
 
   const [foodEntries, setFoodEntries] = useState<FoodEntry[]>(() => {
     const saved = localStorage.getItem('foodEntries');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  const [savedRecipes, setSavedRecipes] = useState<DBFoodItem[]>(() => {
+    const saved = localStorage.getItem('savedRecipes');
     return saved ? JSON.parse(saved) : [];
   });
 
@@ -89,6 +95,10 @@ function App() {
     localStorage.setItem('exerciseEntries', JSON.stringify(exerciseEntries));
   }, [exerciseEntries]);
 
+  useEffect(() => {
+    localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
+  }, [savedRecipes]);
+
   const dailyFood = useMemo(() => 
     foodEntries.filter(entry => isSameDay(new Date(entry.timestamp), selectedDate)),
   [foodEntries, selectedDate]);
@@ -112,19 +122,19 @@ function App() {
   const tdee = calculateTDEE(stats);
   const macroGoals = calculateMacroGoals(tdee);
 
-  const [pendingFood, setPendingFood] = useState<typeof INDIAN_CUISINE[0] | null>(null);
+  const [pendingFood, setPendingFood] = useState<DBFoodItem | null>(null);
   const [foodQuantity, setFoodQuantity] = useState(1);
   const [foodUnit, setFoodUnit] = useState<'serving' | 'g' | 'ml' | 'tbsp' | 'slice'>('serving');
 
-  const addFood = (food: typeof INDIAN_CUISINE[0], quantity: number = 1, unit: string = 'serving') => {
+  const addFood = (food: DBFoodItem, quantity: number = 1, unit: string = 'serving') => {
     let factor = quantity;
     if (unit === 'tbsp') factor = (quantity * 15) / 100;
-    else if (unit === 'slice') factor = (quantity * ((food as any).sliceWeight || 30)) / 100;
+    else if (unit === 'slice') factor = (quantity * (food.sliceWeight || 30)) / 100;
     else if (unit === 'g' || unit === 'ml') factor = quantity / 100;
     
     const newEntry: FoodEntry = {
       ...food,
-      id: Math.random().toString(36).substr(2, 9),
+      id: Math.random().toString(36).substring(2, 11),
       name: unit === 'serving' && quantity === 1 ? food.name : `${quantity}${unit === 'serving' ? 'x' : unit} ${food.name}`,
       calories: Math.round(food.calories * factor),
       protein: food.protein * factor,
@@ -168,7 +178,7 @@ function App() {
   const deleteFood = (id: string) => setFoodEntries(foodEntries.filter(e => e.id !== id));
   const deleteExercise = (id: string) => setExerciseEntries(exerciseEntries.filter(e => e.id !== id));
 
-  const filteredFoods = INDIAN_CUISINE.filter(food => 
+  const filteredFoods = [...savedRecipes, ...INDIAN_CUISINE].filter(food => 
     food.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     food.category?.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -493,12 +503,22 @@ function App() {
         title="Recipe Creator"
       >
         <RecipeCreator onSave={(recipe) => {
-          const newEntry: FoodEntry = {
+          const dbItem: DBFoodItem = {
             ...recipe,
-            id: Math.random().toString(36).substr(2, 9),
-            timestamp: selectedDate.getTime(),
+            category: 'My Recipes'
           };
-          setFoodEntries([...foodEntries, newEntry]);
+          
+          const newEntry: FoodEntry = {
+            ...dbItem,
+            id: Math.random().toString(36).substring(2, 11),
+            timestamp: selectedDate.getTime(),
+            servingSize: '1 recipe',
+          };
+
+          // Save to local database for future use
+          setSavedRecipes(prev => [...prev, dbItem]);
+          // Add to daily log
+          setFoodEntries(prev => [...prev, newEntry]);
           setIsRecipeModalOpen(false);
         }} />
       </Modal>
