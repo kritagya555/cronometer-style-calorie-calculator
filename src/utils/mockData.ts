@@ -1576,6 +1576,491 @@ export const RAW_INGREDIENTS = [
   { name: 'Jaggery (Gur)', calories: 383, protein: 0.4, carbs: 98, fat: 0.1, baseUnit: 'g' as const },
   { name: 'Honey', calories: 304, protein: 0.3, carbs: 82, fat: 0, baseUnit: 'g' as const },
   { name: 'Cocoa Powder', calories: 228, protein: 20, carbs: 58, fat: 14, baseUnit: 'g' as const },
+  
+  // ── Common Flours ─────────────────────────────────────────────
+  { name: 'Besan (Chickpea Flour)', calories: 387, protein: 22, carbs: 58, fat: 6, baseUnit: 'g' as const },
+  { name: 'Sooji / Rava (Semolina, Fine)', calories: 360, protein: 12, carbs: 73, fat: 1, baseUnit: 'g' as const },
+  { name: 'Sooji (Semolina, Coarse)', calories: 360, protein: 12, carbs: 73, fat: 1, baseUnit: 'g' as const },
+  { name: 'Ragi / Finger Millet Flour', calories: 336, protein: 7.3, carbs: 72, fat: 1.5, baseUnit: 'g' as const },
+  { name: 'Bajra / Pearl Millet Flour', calories: 361, protein: 11.6, carbs: 67, fat: 5, baseUnit: 'g' as const },
+  { name: 'Jowar / Sorghum Flour', calories: 349, protein: 10, carbs: 72, fat: 3.1, baseUnit: 'g' as const },
+  { name: 'Maize / Makki Flour (Cornmeal)', calories: 365, protein: 9, carbs: 76, fat: 3.5, baseUnit: 'g' as const },
+  { name: 'Corn Flour (Starch)', calories: 381, protein: 0.3, carbs: 91, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Arrowroot Powder', calories: 357, protein: 0.3, carbs: 88, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Rice Flour', calories: 366, protein: 6, carbs: 80, fat: 1.4, baseUnit: 'g' as const },
+  { name: 'Amaranth Flour (Rajgira)', calories: 371, protein: 14, carbs: 65, fat: 7, baseUnit: 'g' as const },
+  { name: 'Buckwheat Flour (Kuttu)', calories: 335, protein: 12.6, carbs: 71, fat: 3.1, baseUnit: 'g' as const },
+  { name: 'Soy Flour', calories: 436, protein: 34, carbs: 35, fat: 20, baseUnit: 'g' as const },
+  { name: 'Chestnut Flour (Singhara)', calories: 340, protein: 4.5, carbs: 76, fat: 1, baseUnit: 'g' as const },
+  { name: 'Tapioca / Sabudana Flour', calories: 358, protein: 0.2, carbs: 88, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Urad Dal Flour', calories: 341, protein: 25, carbs: 59, fat: 1.6, baseUnit: 'g' as const },
+  { name: 'Moth Bean Flour', calories: 343, protein: 23, carbs: 61, fat: 1.5, baseUnit: 'g' as const },
+ 
+  // ── Whole Grains & Cereals ────────────────────────────────────
+  { name: 'Wheat (Whole, Raw)', calories: 340, protein: 11, carbs: 71, fat: 2, baseUnit: 'g' as const },
+  { name: 'Dalia (Broken Wheat)', calories: 342, protein: 11.5, carbs: 73, fat: 1.5, baseUnit: 'g' as const },
+  { name: 'Poha / Flattened Rice', calories: 369, protein: 7, carbs: 80, fat: 1.2, baseUnit: 'g' as const },
+  { name: 'Muri / Puffed Rice', calories: 402, protein: 7.5, carbs: 90, fat: 0.5, baseUnit: 'g' as const },
+  { name: 'Corn / Maize (Raw)', calories: 365, protein: 9, carbs: 74, fat: 4.7, baseUnit: 'g' as const },
+  { name: 'Jowar (Whole Sorghum)', calories: 349, protein: 10, carbs: 72, fat: 3.1, baseUnit: 'g' as const },
+  { name: 'Bajra (Whole Pearl Millet)', calories: 378, protein: 11.6, carbs: 67, fat: 5, baseUnit: 'g' as const },
+  { name: 'Ragi (Whole Finger Millet)', calories: 336, protein: 7.3, carbs: 72, fat: 1.5, baseUnit: 'g' as const },
+  { name: 'Foxtail Millet (Kangni)', calories: 351, protein: 12.3, carbs: 60.9, fat: 4, baseUnit: 'g' as const },
+  { name: 'Kodo Millet', calories: 309, protein: 9.8, carbs: 66, fat: 3.6, baseUnit: 'g' as const },
+  { name: 'Little Millet (Kutki)', calories: 341, protein: 7.7, carbs: 65, fat: 5, baseUnit: 'g' as const },
+  { name: 'Barnyard Millet (Sanwa)', calories: 300, protein: 11.2, carbs: 65, fat: 3.9, baseUnit: 'g' as const },
+  { name: 'Sabudana (Tapioca Pearls)', calories: 350, protein: 0.2, carbs: 85, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Vermicelli (Seviyan, Raw)', calories: 370, protein: 13, carbs: 75, fat: 1, baseUnit: 'g' as const },
+  { name: 'Pasta (Raw)', calories: 371, protein: 13, carbs: 75, fat: 1.5, baseUnit: 'g' as const },
+  { name: 'Macaroni (Raw)', calories: 371, protein: 13, carbs: 75, fat: 1.5, baseUnit: 'g' as const },
+  { name: 'Bread Crumbs', calories: 395, protein: 13, carbs: 72, fat: 5, baseUnit: 'g' as const },
+  { name: 'Cornflakes (Plain, Unsweetened)', calories: 357, protein: 7, carbs: 84, fat: 0.4, baseUnit: 'g' as const },
+  { name: 'Wheat Bran', calories: 216, protein: 15.6, carbs: 64, fat: 4.3, baseUnit: 'g' as const },
+  { name: 'Wheat Germ', calories: 360, protein: 23, carbs: 52, fat: 9.7, baseUnit: 'g' as const },
+ 
+  // ══════════════════════════════════════════════════════════════
+  //  DALS & LEGUMES  (per 100 g, raw/dry)
+  // ══════════════════════════════════════════════════════════════
+ 
+  { name: 'Masoor Dal (Red Lentil)', calories: 353, protein: 25, carbs: 60, fat: 1.1, baseUnit: 'g' as const },
+  { name: 'Urad Dal (Black Gram, Split)', calories: 347, protein: 25, carbs: 59, fat: 1.4, baseUnit: 'g' as const },
+  { name: 'Urad Dal (Whole Black Gram)', calories: 341, protein: 26, carbs: 60, fat: 1.6, baseUnit: 'g' as const },
+  { name: 'Moong Dal (Whole Green Gram)', calories: 347, protein: 24, carbs: 60, fat: 1.2, baseUnit: 'g' as const },
+  { name: 'Toor / Arhar Dal', calories: 335, protein: 22, carbs: 58, fat: 1.5, baseUnit: 'g' as const },
+  { name: 'Chana Dal (Bengal Gram, Split)', calories: 372, protein: 20, carbs: 60, fat: 5, baseUnit: 'g' as const },
+  { name: 'Kala Chana (Black Chickpeas)', calories: 364, protein: 19, carbs: 61, fat: 6, baseUnit: 'g' as const },
+  { name: 'Kabuli Chana (White Chickpeas)', calories: 364, protein: 19, carbs: 61, fat: 6, baseUnit: 'g' as const },
+  { name: 'Rajma (Kidney Beans, Dark Red)', calories: 333, protein: 23, carbs: 60, fat: 0.8, baseUnit: 'g' as const },
+  { name: 'Rajma (Kidney Beans, Light Red)', calories: 333, protein: 23, carbs: 60, fat: 0.8, baseUnit: 'g' as const },
+  { name: 'Lobia / Chawli (Black-Eyed Peas)', calories: 336, protein: 24, carbs: 60, fat: 1.3, baseUnit: 'g' as const },
+  { name: 'Moth Dal (Matki)', calories: 343, protein: 23, carbs: 61, fat: 1.5, baseUnit: 'g' as const },
+  { name: 'Kulthi Dal (Horse Gram)', calories: 321, protein: 22, carbs: 57, fat: 0.5, baseUnit: 'g' as const },
+  { name: 'Val Dal (Field Beans)', calories: 347, protein: 24.9, carbs: 60, fat: 1.5, baseUnit: 'g' as const },
+  { name: 'Green Moong (Whole)', calories: 347, protein: 24, carbs: 60, fat: 1.2, baseUnit: 'g' as const },
+  { name: 'Soybean (Raw)', calories: 446, protein: 36, carbs: 30, fat: 20, baseUnit: 'g' as const },
+  { name: 'Peas (Dried, Yellow)', calories: 339, protein: 24, carbs: 60, fat: 1.1, baseUnit: 'g' as const },
+  { name: 'Dried White Peas (Safed Vatana)', calories: 336, protein: 23, carbs: 60, fat: 1.3, baseUnit: 'g' as const },
+  { name: 'Dried Green Peas (Hara Vatana)', calories: 339, protein: 24, carbs: 60, fat: 1.1, baseUnit: 'g' as const },
+  { name: 'Adzuki Beans', calories: 329, protein: 20, carbs: 63, fat: 0.5, baseUnit: 'g' as const },
+ 
+  // ══════════════════════════════════════════════════════════════
+  //  DAIRY & ALTERNATIVES  (per 100 g / 100 ml)
+  // ══════════════════════════════════════════════════════════════
+ 
+  { name: 'Milk (Toned)', calories: 58, protein: 3.2, carbs: 4.8, fat: 3, baseUnit: 'ml' as const },
+  { name: 'Milk (Double Toned)', calories: 45, protein: 3.2, carbs: 5, fat: 1.5, baseUnit: 'ml' as const },
+  { name: 'Buffalo Milk', calories: 117, protein: 4.3, carbs: 5, fat: 8, baseUnit: 'ml' as const },
+  { name: 'Condensed Milk (Sweetened)', calories: 321, protein: 8, carbs: 55, fat: 8.7, baseUnit: 'g' as const },
+  { name: 'Evaporated Milk', calories: 135, protein: 7, carbs: 10, fat: 7.5, baseUnit: 'ml' as const },
+  { name: 'Milk Powder (Full Cream)', calories: 496, protein: 26, carbs: 38, fat: 27, baseUnit: 'g' as const },
+  { name: 'Milk Powder (Skimmed)', calories: 362, protein: 36, carbs: 52, fat: 0.8, baseUnit: 'g' as const },
+  { name: 'Khoya / Mawa', calories: 421, protein: 20, carbs: 31, fat: 26, baseUnit: 'g' as const },
+  { name: 'Chena / Fresh Cottage Cheese', calories: 300, protein: 18, carbs: 6, fat: 23, baseUnit: 'g' as const },
+  { name: 'Cream (Fresh, 25% fat)', calories: 243, protein: 2.5, carbs: 3.2, fat: 25, baseUnit: 'g' as const },
+  { name: 'Malai (Clotted Cream)', calories: 350, protein: 2.5, carbs: 3, fat: 36, baseUnit: 'g' as const },
+  { name: 'Sour Cream', calories: 193, protein: 2, carbs: 4, fat: 20, baseUnit: 'g' as const },
+  { name: 'Cream Cheese', calories: 350, protein: 6, carbs: 4, fat: 34, baseUnit: 'g' as const },
+  { name: 'Mozzarella Cheese', calories: 280, protein: 22, carbs: 2.2, fat: 22, baseUnit: 'g' as const },
+  { name: 'Processed Cheese Slice', calories: 330, protein: 18, carbs: 4, fat: 27, baseUnit: 'g' as const },
+  { name: 'Whey Protein (Plain)', calories: 400, protein: 80, carbs: 10, fat: 5, baseUnit: 'g' as const },
+  { name: 'Coconut Milk (Full Fat)', calories: 230, protein: 2.3, carbs: 6, fat: 24, baseUnit: 'ml' as const },
+  { name: 'Coconut Milk (Light)', calories: 135, protein: 1.5, carbs: 4, fat: 13, baseUnit: 'ml' as const },
+  { name: 'Almond Milk (Unsweetened)', calories: 15, protein: 0.5, carbs: 0.6, fat: 1.2, baseUnit: 'ml' as const },
+ 
+  // ══════════════════════════════════════════════════════════════
+  //  FATS, OILS & COOKING MEDIUMS  (per 100 ml / 100 g)
+  // ══════════════════════════════════════════════════════════════
+ 
+  { name: 'Groundnut / Peanut Oil', calories: 884, protein: 0, carbs: 0, fat: 100, baseUnit: 'ml' as const },
+  { name: 'Sesame Oil (Til Tel)', calories: 884, protein: 0, carbs: 0, fat: 100, baseUnit: 'ml' as const },
+  { name: 'Rice Bran Oil', calories: 884, protein: 0, carbs: 0, fat: 100, baseUnit: 'ml' as const },
+  { name: 'Palm Oil', calories: 884, protein: 0, carbs: 0, fat: 100, baseUnit: 'ml' as const },
+  { name: 'Canola Oil', calories: 884, protein: 0, carbs: 0, fat: 100, baseUnit: 'ml' as const },
+  { name: 'Vanaspati / Dalda (Hydrogenated)', calories: 900, protein: 0, carbs: 0, fat: 100, baseUnit: 'g' as const },
+  { name: 'Margarine', calories: 717, protein: 0.2, carbs: 0.4, fat: 81, baseUnit: 'g' as const },
+  { name: 'Lard (Pork Fat)', calories: 902, protein: 0, carbs: 0, fat: 100, baseUnit: 'g' as const },
+  { name: 'Vinegar (White)', calories: 18, protein: 0, carbs: 0.9, fat: 0, baseUnit: 'ml' as const },
+  { name: 'Apple Cider Vinegar', calories: 22, protein: 0, carbs: 0.9, fat: 0, baseUnit: 'ml' as const },
+ 
+  // ══════════════════════════════════════════════════════════════
+  //  MEATS & POULTRY  (per 100 g, raw)
+  // ══════════════════════════════════════════════════════════════
+ 
+  { name: 'Chicken (Whole, With Skin)', calories: 215, protein: 18, carbs: 0, fat: 15, baseUnit: 'g' as const },
+  { name: 'Chicken (Drumstick, Raw)', calories: 172, protein: 19, carbs: 0, fat: 10, baseUnit: 'g' as const },
+  { name: 'Chicken (Mince / Keema)', calories: 143, protein: 17, carbs: 0, fat: 8, baseUnit: 'g' as const },
+  { name: 'Chicken Liver', calories: 119, protein: 17, carbs: 0.9, fat: 4.8, baseUnit: 'g' as const },
+  { name: 'Mutton (Bone-in, Raw)', calories: 294, protein: 18, carbs: 0, fat: 24, baseUnit: 'g' as const },
+  { name: 'Mutton (Mince / Keema)', calories: 294, protein: 25, carbs: 0, fat: 21, baseUnit: 'g' as const },
+  { name: 'Mutton Liver', calories: 154, protein: 21, carbs: 1.8, fat: 6.9, baseUnit: 'g' as const },
+  { name: 'Goat Meat (Lean)', calories: 143, protein: 27, carbs: 0, fat: 3.6, baseUnit: 'g' as const },
+  { name: 'Beef (Lean)', calories: 250, protein: 26, carbs: 0, fat: 15, baseUnit: 'g' as const },
+  { name: 'Pork (Lean)', calories: 242, protein: 27, carbs: 0, fat: 14, baseUnit: 'g' as const },
+  { name: 'Duck Meat', calories: 337, protein: 19, carbs: 0, fat: 28, baseUnit: 'g' as const },
+  { name: 'Quail Meat', calories: 192, protein: 22, carbs: 0, fat: 12, baseUnit: 'g' as const },
+  { name: 'Rabbit Meat', calories: 173, protein: 33, carbs: 0, fat: 3.5, baseUnit: 'g' as const },
+  { name: 'Sausage (Chicken)', calories: 216, protein: 16, carbs: 3, fat: 16, baseUnit: 'g' as const },
+  { name: 'Salami', calories: 336, protein: 18, carbs: 3, fat: 28, baseUnit: 'g' as const },
+  { name: 'Ham (Cooked)', calories: 163, protein: 21, carbs: 1, fat: 8, baseUnit: 'g' as const },
+ 
+  // ══════════════════════════════════════════════════════════════
+  //  SEAFOOD  (per 100 g, raw)
+  // ══════════════════════════════════════════════════════════════
+ 
+  { name: 'Rohu Fish (Raw)', calories: 97, protein: 16, carbs: 0, fat: 2.5, baseUnit: 'g' as const },
+  { name: 'Catla Fish (Raw)', calories: 111, protein: 18, carbs: 0, fat: 4, baseUnit: 'g' as const },
+  { name: 'Pomfret (Raw)', calories: 93, protein: 16, carbs: 0, fat: 2.2, baseUnit: 'g' as const },
+  { name: 'Surmai / King Mackerel (Raw)', calories: 158, protein: 20, carbs: 0, fat: 8, baseUnit: 'g' as const },
+  { name: 'Bangda / Indian Mackerel (Raw)', calories: 139, protein: 19, carbs: 0, fat: 6.2, baseUnit: 'g' as const },
+  { name: 'Hilsa / Ilish (Raw)', calories: 217, protein: 20, carbs: 0, fat: 14, baseUnit: 'g' as const },
+  { name: 'Tilapia (Raw)', calories: 96, protein: 20, carbs: 0, fat: 1.7, baseUnit: 'g' as const },
+  { name: 'Tuna (Raw)', calories: 130, protein: 28, carbs: 0, fat: 1, baseUnit: 'g' as const },
+  { name: 'Tuna (Canned in Water)', calories: 116, protein: 26, carbs: 0, fat: 1, baseUnit: 'g' as const },
+  { name: 'Prawns / Shrimp (Raw)', calories: 106, protein: 20, carbs: 1, fat: 1.7, baseUnit: 'g' as const },
+  { name: 'Tiger Prawns (Raw)', calories: 89, protein: 18, carbs: 0.9, fat: 1, baseUnit: 'g' as const },
+  { name: 'Crab (Raw)', calories: 83, protein: 18, carbs: 0, fat: 1, baseUnit: 'g' as const },
+  { name: 'Lobster (Raw)', calories: 90, protein: 19, carbs: 0.5, fat: 0.9, baseUnit: 'g' as const },
+  { name: 'Squid / Calamari (Raw)', calories: 92, protein: 15.6, carbs: 3.1, fat: 1.4, baseUnit: 'g' as const },
+  { name: 'Mussels (Raw)', calories: 86, protein: 11.9, carbs: 3.7, fat: 2.2, baseUnit: 'g' as const },
+  { name: 'Oysters (Raw)', calories: 68, protein: 7, carbs: 3.9, fat: 2.5, baseUnit: 'g' as const },
+  { name: 'Dried Fish (Stockfish)', calories: 284, protein: 63, carbs: 0, fat: 2.3, baseUnit: 'g' as const },
+  { name: 'Fish Roe', calories: 143, protein: 24, carbs: 1.5, fat: 5.9, baseUnit: 'g' as const },
+ 
+  // ══════════════════════════════════════════════════════════════
+  //  EGGS  (per 100 g)
+  // ══════════════════════════════════════════════════════════════
+ 
+  { name: 'Egg White (Raw)', calories: 52, protein: 11, carbs: 0.7, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Egg Yolk (Raw)', calories: 322, protein: 16, carbs: 3.6, fat: 27, baseUnit: 'g' as const },
+  { name: 'Duck Egg (Raw)', calories: 185, protein: 13, carbs: 1.4, fat: 14, baseUnit: 'g' as const },
+  { name: 'Quail Egg (Raw)', calories: 158, protein: 13, carbs: 0.4, fat: 11, baseUnit: 'g' as const },
+ 
+  // ══════════════════════════════════════════════════════════════
+  //  VEGETABLES  (per 100 g, raw)
+  // ══════════════════════════════════════════════════════════════
+ 
+  // ── Root & Tuber ──────────────────────────────────────────────
+  { name: 'Sweet Potato (Shakarkand)', calories: 86, protein: 1.6, carbs: 20, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Yam (Suran / Jimikand)', calories: 118, protein: 1.5, carbs: 28, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Colocasia / Arbi (Taro Root)', calories: 112, protein: 1.5, carbs: 26, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Radish (Mooli)', calories: 16, protein: 0.7, carbs: 3.4, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Turnip (Shalgam)', calories: 28, protein: 0.9, carbs: 6.4, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Beet Root (Chukandar)', calories: 43, protein: 1.6, carbs: 10, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Carrot (Gajar)', calories: 41, protein: 0.9, carbs: 10, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Lotus Stem (Kamal Kakdi)', calories: 74, protein: 2.6, carbs: 17, fat: 0.1, baseUnit: 'g' as const },
+ 
+  // ── Gourds & Squash ───────────────────────────────────────────
+  { name: 'Bottle Gourd (Lauki / Ghiya)', calories: 15, protein: 0.6, carbs: 3.4, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Bitter Gourd (Karela)', calories: 17, protein: 1, carbs: 3.7, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Ridge Gourd (Turai / Torai)', calories: 20, protein: 1.2, carbs: 4.4, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Snake Gourd (Chichinda)', calories: 18, protein: 0.5, carbs: 3.9, fat: 0.3, baseUnit: 'g' as const },
+  { name: 'Round Gourd (Tinda)', calories: 21, protein: 0.5, carbs: 4.7, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Pumpkin (Kaddu)', calories: 26, protein: 1, carbs: 6.5, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Ash Gourd (Petha / Winter Melon)', calories: 13, protein: 0.4, carbs: 3, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Pointed Gourd (Parwal)', calories: 20, protein: 2, carbs: 2.2, fat: 0.3, baseUnit: 'g' as const },
+  { name: 'Ivy Gourd (Tindora / Kundru)', calories: 18, protein: 1.2, carbs: 3.1, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Raw Papaya (Kachha Papita)', calories: 32, protein: 1.5, carbs: 7.2, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Raw Banana (Kachha Kela)', calories: 89, protein: 1.3, carbs: 22, fat: 0.3, baseUnit: 'g' as const },
+  { name: 'Raw Jackfruit (Kathal)', calories: 51, protein: 3.3, carbs: 9.4, fat: 0.4, baseUnit: 'g' as const },
+  { name: 'Drumstick (Sahjan / Moringa)', calories: 37, protein: 2.1, carbs: 8.5, fat: 0.2, baseUnit: 'g' as const },
+ 
+  // ── Leafy Greens ──────────────────────────────────────────────
+  { name: 'Fenugreek Leaves (Methi)', calories: 49, protein: 4.4, carbs: 6, fat: 0.9, baseUnit: 'g' as const },
+  { name: 'Mustard Leaves (Sarson)', calories: 27, protein: 2.9, carbs: 4.7, fat: 0.4, baseUnit: 'g' as const },
+  { name: 'Amaranth Leaves (Chaulai)', calories: 23, protein: 2.5, carbs: 4, fat: 0.3, baseUnit: 'g' as const },
+  { name: 'Bathua (Chenopodium)', calories: 30, protein: 3, carbs: 5, fat: 0.5, baseUnit: 'g' as const },
+  { name: 'Curry Leaves (Kadi Patta)', calories: 108, protein: 6.1, carbs: 19, fat: 1, baseUnit: 'g' as const },
+  { name: 'Coriander Leaves (Dhania)', calories: 23, protein: 2.1, carbs: 3.7, fat: 0.5, baseUnit: 'g' as const },
+  { name: 'Mint Leaves (Pudina)', calories: 70, protein: 3.8, carbs: 14, fat: 0.9, baseUnit: 'g' as const },
+  { name: 'Dill Leaves (Suva)', calories: 43, protein: 3.5, carbs: 7, fat: 1.1, baseUnit: 'g' as const },
+  { name: 'Drumstick Leaves (Moringa Leaves)', calories: 64, protein: 9.4, carbs: 8.3, fat: 1.4, baseUnit: 'g' as const },
+  { name: 'Colocasia Leaves (Arbi ke Patte)', calories: 23, protein: 3.9, carbs: 3.5, fat: 0.4, baseUnit: 'g' as const },
+  { name: 'Sorrel Leaves (Khatta Palak)', calories: 22, protein: 2, carbs: 3.2, fat: 0.7, baseUnit: 'g' as const },
+  { name: 'Lettuce', calories: 15, protein: 1.4, carbs: 2.9, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Celery', calories: 16, protein: 0.7, carbs: 3, fat: 0.2, baseUnit: 'g' as const },
+ 
+  // ── Alliums ───────────────────────────────────────────────────
+  { name: 'Shallots (Chote Pyaaz)', calories: 72, protein: 2.5, carbs: 17, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Spring Onion / Green Onion', calories: 32, protein: 1.8, carbs: 7.3, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Leek', calories: 61, protein: 1.5, carbs: 14, fat: 0.3, baseUnit: 'g' as const },
+ 
+  // ── Others ────────────────────────────────────────────────────
+  { name: 'Capsicum / Bell Pepper (Green)', calories: 20, protein: 0.9, carbs: 4.6, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Capsicum / Bell Pepper (Red)', calories: 31, protein: 1, carbs: 6, fat: 0.3, baseUnit: 'g' as const },
+  { name: 'Capsicum / Bell Pepper (Yellow)', calories: 27, protein: 1, carbs: 6.3, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Brinjal / Eggplant (Baingan)', calories: 25, protein: 1, carbs: 5.7, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Okra / Lady Finger (Bhindi)', calories: 33, protein: 2, carbs: 7.5, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Mushroom (Button)', calories: 22, protein: 3.1, carbs: 3.3, fat: 0.3, baseUnit: 'g' as const },
+  { name: 'Mushroom (Oyster)', calories: 33, protein: 3.3, carbs: 6.1, fat: 0.4, baseUnit: 'g' as const },
+  { name: 'Mushroom (Shiitake, Dried)', calories: 296, protein: 9.6, carbs: 75, fat: 1, baseUnit: 'g' as const },
+  { name: 'Corn (Fresh / Sweet Corn)', calories: 86, protein: 3.3, carbs: 19, fat: 1.4, baseUnit: 'g' as const },
+  { name: 'French Beans', calories: 31, protein: 1.8, carbs: 7, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Cluster Beans (Guar)', calories: 16, protein: 3.2, carbs: 5.8, fat: 0.4, baseUnit: 'g' as const },
+  { name: 'Broad Beans (Sem / Papdi)', calories: 88, protein: 5.6, carbs: 15.7, fat: 0.6, baseUnit: 'g' as const },
+  { name: 'Cucumber (Kheera)', calories: 15, protein: 0.65, carbs: 3.6, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Ash Gourd / Petha', calories: 13, protein: 0.4, carbs: 3, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Zucchini (Courgette)', calories: 17, protein: 1.2, carbs: 3.1, fat: 0.3, baseUnit: 'g' as const },
+  { name: 'Artichoke (Globe)', calories: 47, protein: 3.3, carbs: 10.5, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Asparagus', calories: 20, protein: 2.2, carbs: 3.9, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Jackfruit (Ripe)', calories: 95, protein: 1.7, carbs: 23, fat: 0.6, baseUnit: 'g' as const },
+  { name: 'Banana Flower (Mocha)', calories: 50, protein: 1.7, carbs: 9.9, fat: 0.6, baseUnit: 'g' as const },
+  { name: 'Bamboo Shoots (Fresh)', calories: 27, protein: 2.6, carbs: 5.2, fat: 0.3, baseUnit: 'g' as const },
+ 
+  // ══════════════════════════════════════════════════════════════
+  //  FRUITS  (per 100 g)
+  // ══════════════════════════════════════════════════════════════
+ 
+  { name: 'Mango (Ripe, Alphonso)', calories: 74, protein: 0.5, carbs: 19, fat: 0.4, baseUnit: 'g' as const },
+  { name: 'Mango (Raw / Green)', calories: 60, protein: 0.8, carbs: 15, fat: 0.4, baseUnit: 'g' as const },
+  { name: 'Banana (Ripe)', calories: 89, protein: 1.1, carbs: 23, fat: 0.3, baseUnit: 'g' as const },
+  { name: 'Apple (Red)', calories: 52, protein: 0.3, carbs: 14, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Orange', calories: 47, protein: 0.9, carbs: 12, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Papaya (Ripe)', calories: 43, protein: 0.5, carbs: 11, fat: 0.4, baseUnit: 'g' as const },
+  { name: 'Pineapple', calories: 50, protein: 0.5, carbs: 13, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Guava (Amrood)', calories: 68, protein: 2.6, carbs: 14, fat: 1, baseUnit: 'g' as const },
+  { name: 'Pomegranate (Anaar)', calories: 83, protein: 1.7, carbs: 19, fat: 1.2, baseUnit: 'g' as const },
+  { name: 'Watermelon', calories: 30, protein: 0.6, carbs: 7.6, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Muskmelon / Cantaloupe (Kharbooja)', calories: 34, protein: 0.8, carbs: 8.2, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Grapes (Green)', calories: 67, protein: 0.6, carbs: 17, fat: 0.4, baseUnit: 'g' as const },
+  { name: 'Grapes (Black / Red)', calories: 70, protein: 0.7, carbs: 18, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Strawberry', calories: 32, protein: 0.7, carbs: 7.7, fat: 0.3, baseUnit: 'g' as const },
+  { name: 'Kiwi', calories: 61, protein: 1.1, carbs: 15, fat: 0.5, baseUnit: 'g' as const },
+  { name: 'Pear (Naashpati)', calories: 57, protein: 0.4, carbs: 15, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Peach (Aadoo)', calories: 39, protein: 0.9, carbs: 10, fat: 0.3, baseUnit: 'g' as const },
+  { name: 'Plum (Aloo Bukhara)', calories: 46, protein: 0.7, carbs: 11, fat: 0.3, baseUnit: 'g' as const },
+  { name: 'Lychee (Litchi)', calories: 66, protein: 0.8, carbs: 17, fat: 0.4, baseUnit: 'g' as const },
+  { name: 'Sapota / Chiku', calories: 83, protein: 0.4, carbs: 20, fat: 1.1, baseUnit: 'g' as const },
+  { name: 'Custard Apple (Sitaphal)', calories: 101, protein: 1.7, carbs: 25, fat: 0.6, baseUnit: 'g' as const },
+  { name: 'Avocado', calories: 160, protein: 2, carbs: 9, fat: 15, baseUnit: 'g' as const },
+  { name: 'Coconut (Fresh, Grated)', calories: 354, protein: 3.3, carbs: 15, fat: 33, baseUnit: 'g' as const },
+  { name: 'Coconut (Dry / Desiccated)', calories: 660, protein: 6.9, carbs: 24, fat: 65, baseUnit: 'g' as const },
+  { name: 'Tamarind (Raw, Imli)', calories: 239, protein: 2.8, carbs: 63, fat: 0.6, baseUnit: 'g' as const },
+  { name: 'Kokum (Dried)', calories: 92, protein: 1.3, carbs: 22, fat: 0.3, baseUnit: 'g' as const },
+  { name: 'Amla / Indian Gooseberry', calories: 44, protein: 0.9, carbs: 10.2, fat: 0.6, baseUnit: 'g' as const },
+  { name: 'Lemon (Nimbu)', calories: 29, protein: 1.1, carbs: 9.3, fat: 0.3, baseUnit: 'g' as const },
+  { name: 'Lime (Kagzi Nimbu)', calories: 30, protein: 0.7, carbs: 10.5, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Star Fruit (Kamrakh)', calories: 31, protein: 1, carbs: 6.7, fat: 0.3, baseUnit: 'g' as const },
+  { name: 'Jamun (Indian Blackberry)', calories: 62, protein: 0.7, carbs: 14, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Bael Fruit (Wood Apple)', calories: 137, protein: 1.8, carbs: 31.8, fat: 0.3, baseUnit: 'g' as const },
+  { name: 'Jackfruit (Ripe, Kathal)', calories: 95, protein: 1.7, carbs: 23, fat: 0.6, baseUnit: 'g' as const },
+  { name: 'Banana (Plantain, Raw)', calories: 122, protein: 1.3, carbs: 32, fat: 0.4, baseUnit: 'g' as const },
+  { name: 'Fig (Anjeer, Fresh)', calories: 74, protein: 0.8, carbs: 19, fat: 0.3, baseUnit: 'g' as const },
+ 
+  // ══════════════════════════════════════════════════════════════
+  //  NUTS & SEEDS  (per 100 g)
+  // ══════════════════════════════════════════════════════════════
+ 
+  { name: 'Sesame Seeds (Til, White)', calories: 573, protein: 17, carbs: 23, fat: 50, baseUnit: 'g' as const },
+  { name: 'Sesame Seeds (Til, Black)', calories: 573, protein: 17, carbs: 23, fat: 50, baseUnit: 'g' as const },
+  { name: 'Flaxseeds / Linseed (Alsi)', calories: 534, protein: 18, carbs: 29, fat: 42, baseUnit: 'g' as const },
+  { name: 'Sunflower Seeds (Surajmukhi)', calories: 584, protein: 21, carbs: 20, fat: 51, baseUnit: 'g' as const },
+  { name: 'Pumpkin Seeds (Kaddu Ke Beej)', calories: 559, protein: 30, carbs: 11, fat: 49, baseUnit: 'g' as const },
+  { name: 'Chia Seeds', calories: 486, protein: 17, carbs: 42, fat: 31, baseUnit: 'g' as const },
+  { name: 'Melon Seeds (Magaz)', calories: 557, protein: 28, carbs: 14, fat: 48, baseUnit: 'g' as const },
+  { name: 'Poppy Seeds (Khus Khus)', calories: 525, protein: 18, carbs: 28, fat: 42, baseUnit: 'g' as const },
+  { name: 'Hemp Seeds', calories: 553, protein: 32, carbs: 9, fat: 48, baseUnit: 'g' as const },
+  { name: 'Lotus Seeds / Makhana (Raw)', calories: 362, protein: 9.7, carbs: 77, fat: 0.5, baseUnit: 'g' as const },
+  { name: 'Watermelon Seeds (Tarbuj Ke Beej)', calories: 557, protein: 28, carbs: 15, fat: 47, baseUnit: 'g' as const },
+  { name: 'Pistachios (Pista)', calories: 560, protein: 20, carbs: 28, fat: 45, baseUnit: 'g' as const },
+  { name: 'Macadamia Nuts', calories: 718, protein: 7.9, carbs: 14, fat: 76, baseUnit: 'g' as const },
+  { name: 'Hazelnuts (Pahadi Badam)', calories: 628, protein: 15, carbs: 17, fat: 61, baseUnit: 'g' as const },
+  { name: 'Pine Nuts (Chilgoza)', calories: 673, protein: 14, carbs: 13, fat: 68, baseUnit: 'g' as const },
+  { name: 'Pecan Nuts', calories: 691, protein: 9.2, carbs: 14, fat: 72, baseUnit: 'g' as const },
+  { name: 'Coconut (Fresh Chunks)', calories: 354, protein: 3.3, carbs: 15, fat: 33, baseUnit: 'g' as const },
+  { name: 'Peanuts (Roasted, Unsalted)', calories: 587, protein: 24, carbs: 21, fat: 50, baseUnit: 'g' as const },
+  { name: 'Groundnut Paste (Chikki Base)', calories: 576, protein: 25, carbs: 21, fat: 49, baseUnit: 'g' as const },
+  { name: 'Tahini (Sesame Paste)', calories: 595, protein: 17, carbs: 21, fat: 54, baseUnit: 'g' as const },
+ 
+  // ══════════════════════════════════════════════════════════════
+  //  DRY FRUITS  (per 100 g)
+  // ══════════════════════════════════════════════════════════════
+ 
+  { name: 'Raisins (Kishmish)', calories: 299, protein: 3.1, carbs: 79, fat: 0.5, baseUnit: 'g' as const },
+  { name: 'Black Raisins (Kala Kishmish)', calories: 296, protein: 3, carbs: 78, fat: 0.5, baseUnit: 'g' as const },
+  { name: 'Dates (Khajoor, Dried)', calories: 282, protein: 2.5, carbs: 75, fat: 0.4, baseUnit: 'g' as const },
+  { name: 'Dates (Medjool, Fresh)', calories: 277, protein: 1.8, carbs: 75, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Figs (Anjeer, Dried)', calories: 249, protein: 3.3, carbs: 64, fat: 0.9, baseUnit: 'g' as const },
+  { name: 'Apricots (Khubani, Dried)', calories: 241, protein: 3.4, carbs: 63, fat: 0.5, baseUnit: 'g' as const },
+  { name: 'Prunes (Dried Plums)', calories: 240, protein: 2.2, carbs: 64, fat: 0.4, baseUnit: 'g' as const },
+  { name: 'Cranberries (Dried)', calories: 308, protein: 0.2, carbs: 83, fat: 1.4, baseUnit: 'g' as const },
+  { name: 'Currants (Sukhi Seeded)', calories: 283, protein: 4, carbs: 67, fat: 0.4, baseUnit: 'g' as const },
+  { name: 'Tutti Frutti (Glazed Fruit Mix)', calories: 325, protein: 0.3, carbs: 83, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Cherries (Dried)', calories: 325, protein: 1, carbs: 82, fat: 0.5, baseUnit: 'g' as const },
+  { name: 'Blueberries (Dried)', calories: 317, protein: 1, carbs: 80, fat: 1.5, baseUnit: 'g' as const },
+ 
+  // ══════════════════════════════════════════════════════════════
+  //  SPICES (WHOLE)  (per 100 g)
+  // ══════════════════════════════════════════════════════════════
+ 
+  { name: 'Cumin Seeds (Jeera)', calories: 375, protein: 18, carbs: 44, fat: 22, baseUnit: 'g' as const },
+  { name: 'Mustard Seeds (Rai)', calories: 508, protein: 26, carbs: 29, fat: 36, baseUnit: 'g' as const },
+  { name: 'Coriander Seeds (Sabut Dhania)', calories: 298, protein: 12, carbs: 55, fat: 18, baseUnit: 'g' as const },
+  { name: 'Black Pepper (Kali Mirch, Whole)', calories: 251, protein: 10, carbs: 64, fat: 3.3, baseUnit: 'g' as const },
+  { name: 'Cardamom (Green, Elaichi)', calories: 311, protein: 11, carbs: 68, fat: 7, baseUnit: 'g' as const },
+  { name: 'Black Cardamom (Badi Elaichi)', calories: 311, protein: 10, carbs: 70, fat: 6, baseUnit: 'g' as const },
+  { name: 'Cloves (Laung)', calories: 274, protein: 6, carbs: 66, fat: 13, baseUnit: 'g' as const },
+  { name: 'Cinnamon (Dalchini, Stick)', calories: 247, protein: 4, carbs: 81, fat: 1.2, baseUnit: 'g' as const },
+  { name: 'Bay Leaves (Tej Patta)', calories: 313, protein: 7.6, carbs: 75, fat: 8.4, baseUnit: 'g' as const },
+  { name: 'Star Anise (Chakra Phool)', calories: 337, protein: 18, carbs: 50, fat: 16, baseUnit: 'g' as const },
+  { name: 'Fenugreek Seeds (Methi Dana)', calories: 323, protein: 23, carbs: 58, fat: 6, baseUnit: 'g' as const },
+  { name: 'Fennel Seeds (Saunf)', calories: 345, protein: 16, carbs: 52, fat: 15, baseUnit: 'g' as const },
+  { name: 'Carom Seeds (Ajwain)', calories: 305, protein: 17, carbs: 43, fat: 25, baseUnit: 'g' as const },
+  { name: 'Nigella Seeds (Kalonji)', calories: 375, protein: 15, carbs: 44, fat: 22, baseUnit: 'g' as const },
+  { name: 'Caraway Seeds (Shahi Jeera / Kala Jeera)', calories: 333, protein: 20, carbs: 50, fat: 15, baseUnit: 'g' as const },
+  { name: 'Dried Red Chilli (Sabut Lal Mirch)', calories: 282, protein: 12, carbs: 57, fat: 9, baseUnit: 'g' as const },
+  { name: 'Mace (Javitri)', calories: 475, protein: 6, carbs: 51, fat: 33, baseUnit: 'g' as const },
+  { name: 'Nutmeg (Jaiphal)', calories: 525, protein: 5.8, carbs: 49, fat: 36, baseUnit: 'g' as const },
+  { name: 'Asafoetida / Hing (Compounded)', calories: 297, protein: 4, carbs: 68, fat: 1.1, baseUnit: 'g' as const },
+  { name: 'Saffron (Kesar)', calories: 310, protein: 11, carbs: 65, fat: 5.9, baseUnit: 'g' as const },
+  { name: 'Dried Rose Petals (Gulab Pankhudi)', calories: 220, protein: 3, carbs: 55, fat: 1.5, baseUnit: 'g' as const },
+  { name: 'Dried Mango Powder (Amchur)', calories: 350, protein: 2.8, carbs: 81, fat: 1.5, baseUnit: 'g' as const },
+  { name: 'Pomegranate Seed Powder (Anardana)', calories: 266, protein: 3.1, carbs: 60, fat: 2.5, baseUnit: 'g' as const },
+  { name: 'Black Salt (Kala Namak)', calories: 0, protein: 0, carbs: 0, fat: 0, baseUnit: 'g' as const },
+  { name: 'Rock Salt (Sendha Namak)', calories: 0, protein: 0, carbs: 0, fat: 0, baseUnit: 'g' as const },
+  { name: 'Iodised Table Salt', calories: 0, protein: 0, carbs: 0, fat: 0, baseUnit: 'g' as const },
+  { name: 'Kokum Rind (Dried)', calories: 92, protein: 1.3, carbs: 22, fat: 0.3, baseUnit: 'g' as const },
+ 
+  // ── Ground Spice Powders ──────────────────────────────────────
+  { name: 'Turmeric Powder (Haldi)', calories: 354, protein: 8, carbs: 65, fat: 10, baseUnit: 'g' as const },
+  { name: 'Red Chilli Powder (Lal Mirch)', calories: 282, protein: 12, carbs: 57, fat: 9, baseUnit: 'g' as const },
+  { name: 'Coriander Powder (Dhania)', calories: 298, protein: 12, carbs: 55, fat: 18, baseUnit: 'g' as const },
+  { name: 'Cumin Powder (Jeera Powder)', calories: 375, protein: 18, carbs: 44, fat: 22, baseUnit: 'g' as const },
+  { name: 'Garam Masala Powder', calories: 290, protein: 10, carbs: 50, fat: 14, baseUnit: 'g' as const },
+  { name: 'Chaat Masala Powder', calories: 230, protein: 8, carbs: 44, fat: 9, baseUnit: 'g' as const },
+  { name: 'Kashmiri Chilli Powder', calories: 200, protein: 8, carbs: 40, fat: 7, baseUnit: 'g' as const },
+  { name: 'Paprika Powder', calories: 282, protein: 14, carbs: 54, fat: 13, baseUnit: 'g' as const },
+  { name: 'Pepper Powder (Black)', calories: 251, protein: 10, carbs: 64, fat: 3.3, baseUnit: 'g' as const },
+  { name: 'Cardamom Powder', calories: 311, protein: 11, carbs: 68, fat: 7, baseUnit: 'g' as const },
+  { name: 'Cinnamon Powder', calories: 247, protein: 4, carbs: 81, fat: 1.2, baseUnit: 'g' as const },
+  { name: 'Nutmeg Powder', calories: 525, protein: 5.8, carbs: 49, fat: 36, baseUnit: 'g' as const },
+  { name: 'Fennel Powder (Saunf)', calories: 345, protein: 16, carbs: 52, fat: 15, baseUnit: 'g' as const },
+  { name: 'Biryani Masala Powder', calories: 280, protein: 9, carbs: 48, fat: 12, baseUnit: 'g' as const },
+  { name: 'Sambhar Masala Powder', calories: 298, protein: 12, carbs: 48, fat: 15, baseUnit: 'g' as const },
+  { name: 'Rasam Powder', calories: 268, protein: 12, carbs: 45, fat: 12, baseUnit: 'g' as const },
+  { name: 'Pav Bhaji Masala', calories: 230, protein: 9, carbs: 42, fat: 11, baseUnit: 'g' as const },
+  { name: 'Kitchen King Masala', calories: 310, protein: 10, carbs: 50, fat: 14, baseUnit: 'g' as const },
+  { name: 'Meat Masala Powder', calories: 310, protein: 10, carbs: 48, fat: 15, baseUnit: 'g' as const },
+  { name: 'Fish Masala Powder', calories: 280, protein: 10, carbs: 46, fat: 13, baseUnit: 'g' as const },
+  { name: 'Kasuri Methi (Dried Fenugreek Leaf)', calories: 349, protein: 23, carbs: 58, fat: 6.5, baseUnit: 'g' as const },
+  { name: 'Dried Ginger Powder (Soonth)', calories: 347, protein: 9, carbs: 71, fat: 5, baseUnit: 'g' as const },
+ 
+  // ── Rare / Specialty Spices ───────────────────────────────────
+  { name: 'Long Pepper (Pipli)', calories: 293, protein: 12, carbs: 53, fat: 6, baseUnit: 'g' as const },
+  { name: 'Cubeb Pepper (Kababchini)', calories: 300, protein: 11, carbs: 55, fat: 9, baseUnit: 'g' as const },
+  { name: 'Szechuan Pepper (Tirphal)', calories: 250, protein: 7, carbs: 64, fat: 9, baseUnit: 'g' as const },
+  { name: 'Stone Flower (Dagad Phool / Kalpasi)', calories: 270, protein: 8, carbs: 56, fat: 8, baseUnit: 'g' as const },
+  { name: 'Dried Kewra Water (per 5 ml serving)', calories: 0, protein: 0, carbs: 0.1, fat: 0, baseUnit: 'ml' as const },
+  { name: 'Vetiver (Khus) Root', calories: 200, protein: 5, carbs: 45, fat: 3, baseUnit: 'g' as const },
+  { name: 'Gandharaj Lime Zest', calories: 29, protein: 1, carbs: 6, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Marathi Moggu (Kapok Buds)', calories: 280, protein: 8, carbs: 60, fat: 7, baseUnit: 'g' as const },
+  { name: 'Guntur Chilli (Dried)', calories: 282, protein: 12, carbs: 57, fat: 9, baseUnit: 'g' as const },
+  { name: 'Byadagi Chilli (Dried)', calories: 260, protein: 11, carbs: 52, fat: 8, baseUnit: 'g' as const },
+ 
+  // ══════════════════════════════════════════════════════════════
+  //  SWEETENERS & SUGAR VARIANTS  (per 100 g)
+  // ══════════════════════════════════════════════════════════════
+ 
+  { name: 'Brown Sugar', calories: 380, protein: 0, carbs: 98, fat: 0, baseUnit: 'g' as const },
+  { name: 'Powdered Sugar (Icing Sugar)', calories: 387, protein: 0, carbs: 100, fat: 0, baseUnit: 'g' as const },
+  { name: 'Palm Sugar (Taal Gur)', calories: 375, protein: 0.2, carbs: 97, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Coconut Sugar', calories: 375, protein: 0.5, carbs: 95, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Rock Candy (Mishri)', calories: 390, protein: 0, carbs: 100, fat: 0, baseUnit: 'g' as const },
+  { name: 'Stevia (Powder)', calories: 0, protein: 0, carbs: 0, fat: 0, baseUnit: 'g' as const },
+  { name: 'Maple Syrup', calories: 260, protein: 0, carbs: 67, fat: 0.1, baseUnit: 'ml' as const },
+  { name: 'Date Syrup', calories: 280, protein: 2, carbs: 72, fat: 0.1, baseUnit: 'ml' as const },
+  { name: 'Agave Nectar', calories: 310, protein: 0.1, carbs: 76, fat: 0.5, baseUnit: 'ml' as const },
+  { name: 'Molasses (Blackstrap)', calories: 290, protein: 0, carbs: 75, fat: 0.1, baseUnit: 'ml' as const },
+ 
+  // ══════════════════════════════════════════════════════════════
+  //  CONDIMENTS, PASTES & EXTRACTS  (per 100 g / 100 ml)
+  // ══════════════════════════════════════════════════════════════
+ 
+  { name: 'Ginger Paste (Fresh Ground)', calories: 80, protein: 1.8, carbs: 18, fat: 0.8, baseUnit: 'g' as const },
+  { name: 'Garlic Paste (Fresh Ground)', calories: 149, protein: 6.4, carbs: 33, fat: 0.5, baseUnit: 'g' as const },
+  { name: 'Ginger-Garlic Paste', calories: 120, protein: 4, carbs: 26, fat: 0.6, baseUnit: 'g' as const },
+  { name: 'Tomato Puree (Home Made)', calories: 32, protein: 1.6, carbs: 7, fat: 0.4, baseUnit: 'g' as const },
+  { name: 'Tomato Ketchup', calories: 97, protein: 1.7, carbs: 25, fat: 0.3, baseUnit: 'g' as const },
+  { name: 'Soy Sauce', calories: 53, protein: 8.1, carbs: 5, fat: 0.1, baseUnit: 'ml' as const },
+  { name: 'Worcestershire Sauce', calories: 78, protein: 1.5, carbs: 19, fat: 0.1, baseUnit: 'ml' as const },
+  { name: 'Hot Sauce / Tabasco', calories: 12, protein: 0.6, carbs: 1.1, fat: 0.3, baseUnit: 'ml' as const },
+  { name: 'Chilli Sauce (Schezwan)', calories: 168, protein: 3, carbs: 22, fat: 8, baseUnit: 'g' as const },
+  { name: 'Coconut Cream', calories: 330, protein: 3.6, carbs: 7.7, fat: 35, baseUnit: 'ml' as const },
+  { name: 'Tamarind Paste (Imli Paste)', calories: 239, protein: 2.8, carbs: 63, fat: 0.6, baseUnit: 'g' as const },
+  { name: 'Mango Pulp (Sweetened, Canned)', calories: 90, protein: 0.5, carbs: 22, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Rose Water (Gulab Jal)', calories: 0, protein: 0, carbs: 0.1, fat: 0, baseUnit: 'ml' as const },
+  { name: 'Kewra Water', calories: 0, protein: 0, carbs: 0.1, fat: 0, baseUnit: 'ml' as const },
+  { name: 'Vanilla Extract', calories: 288, protein: 0.1, carbs: 13, fat: 0.1, baseUnit: 'ml' as const },
+  { name: 'Baking Powder', calories: 53, protein: 0, carbs: 28, fat: 0, baseUnit: 'g' as const },
+  { name: 'Baking Soda (Meetha Soda)', calories: 0, protein: 0, carbs: 0, fat: 0, baseUnit: 'g' as const },
+  { name: 'Dry Yeast (Active)', calories: 325, protein: 40, carbs: 41, fat: 7.6, baseUnit: 'g' as const },
+  { name: 'Gelatin (Unflavoured)', calories: 335, protein: 86, carbs: 0, fat: 0, baseUnit: 'g' as const },
+  { name: 'Agar Agar (China Grass)', calories: 26, protein: 0.5, carbs: 6.8, fat: 0, baseUnit: 'g' as const },
+  { name: 'Cornstarch (for thickening)', calories: 381, protein: 0.3, carbs: 91, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Edible Camphor (Pachai Karpooram, per 1g)', calories: 0, protein: 0, carbs: 0, fat: 0, baseUnit: 'g' as const },
+ 
+  // ══════════════════════════════════════════════════════════════
+  //  PICKLES & PRESERVES (Ready-Made Base, per 100 g)
+  // ══════════════════════════════════════════════════════════════
+ 
+  { name: 'Mango Pickle (Aam Achaar)', calories: 192, protein: 1.6, carbs: 8.1, fat: 18, baseUnit: 'g' as const },
+  { name: 'Lime Pickle (Nimbu Achaar)', calories: 70, protein: 1.2, carbs: 17, fat: 0.2, baseUnit: 'g' as const },
+  { name: 'Mixed Vegetable Pickle', calories: 211, protein: 1.9, carbs: 7.5, fat: 20, baseUnit: 'g' as const },
+  { name: 'Garlic Pickle (Lahasun Achaar)', calories: 414, protein: 3.7, carbs: 10, fat: 40, baseUnit: 'g' as const },
+  { name: 'Chilli Pickle (Mirchi Achaar)', calories: 100, protein: 1.5, carbs: 12, fat: 5, baseUnit: 'g' as const },
+ 
+  // ══════════════════════════════════════════════════════════════
+  //  BEVERAGES BASE  (per 100 g / 100 ml)
+  // ══════════════════════════════════════════════════════════════
+ 
+  { name: 'Tea Leaves (Black, CTC)', calories: 1, protein: 0.3, carbs: 0.3, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Green Tea Leaves', calories: 1, protein: 0.3, carbs: 0.2, fat: 0, baseUnit: 'g' as const },
+  { name: 'Instant Coffee Powder', calories: 353, protein: 18, carbs: 64, fat: 3.7, baseUnit: 'g' as const },
+  { name: 'Chicory Powder (Coffee Mix)', calories: 320, protein: 4.5, carbs: 75, fat: 0.5, baseUnit: 'g' as const },
+  { name: 'Cocoa Powder (Unsweetened)', calories: 228, protein: 20, carbs: 58, fat: 14, baseUnit: 'g' as const },
+  { name: 'Chocolate (Dark, 70%)', calories: 598, protein: 7.8, carbs: 46, fat: 43, baseUnit: 'g' as const },
+  { name: 'Chocolate (Milk)', calories: 535, protein: 7.7, carbs: 60, fat: 30, baseUnit: 'g' as const },
+  { name: 'Drinking Chocolate Powder', calories: 380, protein: 6, carbs: 80, fat: 5, baseUnit: 'g' as const },
+  { name: 'Malted Milk Powder (Horlicks Type)', calories: 380, protein: 12, carbs: 76, fat: 5, baseUnit: 'g' as const },
+  { name: 'Sherbet / Sharbat Concentrate (per 100 ml)', calories: 240, protein: 0, carbs: 62, fat: 0, baseUnit: 'ml' as const },
+ 
+  // ══════════════════════════════════════════════════════════════
+  //  SPECIALTY / HEALTH / RARE INGREDIENTS  (per 100 g)
+  // ══════════════════════════════════════════════════════════════
+ 
+  { name: 'Moringa Powder (Sahjan Leaf Powder)', calories: 264, protein: 27, carbs: 38, fat: 6, baseUnit: 'g' as const },
+  { name: 'Ashwagandha Powder', calories: 245, protein: 4, carbs: 49, fat: 0.3, baseUnit: 'g' as const },
+  { name: 'Triphala Powder', calories: 150, protein: 2, carbs: 38, fat: 0.5, baseUnit: 'g' as const },
+  { name: 'Spirulina Powder', calories: 290, protein: 57, carbs: 24, fat: 8, baseUnit: 'g' as const },
+  { name: 'Psyllium Husk (Isabgol)', calories: 200, protein: 2, carbs: 85, fat: 0.5, baseUnit: 'g' as const },
+  { name: 'Basil Seeds (Sabja / Tukmaria)', calories: 0, protein: 2.5, carbs: 7, fat: 3, baseUnit: 'g' as const },
+  { name: 'Dried Hibiscus Flowers', calories: 300, protein: 3, carbs: 72, fat: 2.6, baseUnit: 'g' as const },
+  { name: 'Dried Rose Petals', calories: 220, protein: 3, carbs: 55, fat: 1.5, baseUnit: 'g' as const },
+  { name: 'Sandalwood Powder (Edible, Chandan)', calories: 182, protein: 0, carbs: 45, fat: 0, baseUnit: 'g' as const },
+  { name: 'Khus (Vetiver) Syrup base (per 10 ml)', calories: 30, protein: 0, carbs: 7.5, fat: 0, baseUnit: 'ml' as const },
+  { name: 'Lotus Seeds / Makhana (Roasted)', calories: 347, protein: 9.7, carbs: 76, fat: 0.5, baseUnit: 'g' as const },
+  { name: 'Dried Amla Powder', calories: 300, protein: 3.5, carbs: 74, fat: 0.5, baseUnit: 'g' as const },
+  { name: 'Chyawanprash (Ayurvedic Jam)', calories: 360, protein: 3, carbs: 80, fat: 4, baseUnit: 'g' as const },
+  { name: 'Dried Banana Powder', calories: 347, protein: 3.9, carbs: 88, fat: 1.1, baseUnit: 'g' as const },
+  { name: 'Jackfruit Seeds (Kathal Beej, Raw)', calories: 98, protein: 6.6, carbs: 18, fat: 0.4, baseUnit: 'g' as const },
+  { name: 'Tamarind Powder (Imli Powder)', calories: 239, protein: 2.8, carbs: 63, fat: 0.6, baseUnit: 'g' as const },
+  { name: 'Kokum Syrup Base', calories: 180, protein: 0.5, carbs: 44, fat: 0.3, baseUnit: 'ml' as const },
+  { name: 'Dried Curry Leaves Powder', calories: 108, protein: 6, carbs: 18, fat: 1, baseUnit: 'g' as const },
+  { name: 'Edible Gum (Gond / Gaund)', calories: 345, protein: 2.2, carbs: 88, fat: 0.1, baseUnit: 'g' as const },
+  { name: 'Khas Khas (Poppy Seeds, White)', calories: 525, protein: 18, carbs: 28, fat: 42, baseUnit: 'g' as const },
+ 
+  // ══════════════════════════════════════════════════════════════
+  //  PROCESSED & PACKAGED STAPLES  (per 100 g)
+  // ══════════════════════════════════════════════════════════════
+ 
+  { name: 'Muesli (Plain, No Sugar)', calories: 363, protein: 10, carbs: 66, fat: 7, baseUnit: 'g' as const },
+  { name: 'Granola (Honey Oat)', calories: 471, protein: 10, carbs: 64, fat: 20, baseUnit: 'g' as const },
+  { name: 'Roasted Chana (Bhuna Chana)', calories: 364, protein: 17, carbs: 60, fat: 5.5, baseUnit: 'g' as const },
+  { name: 'Papad (Raw, Urad)', calories: 346, protein: 24, carbs: 56, fat: 1, baseUnit: 'g' as const },
+  { name: 'Fryums (Raw)', calories: 420, protein: 8, carbs: 80, fat: 8, baseUnit: 'g' as const },
+  { name: 'Noodles (Instant, Dry)', calories: 446, protein: 9, carbs: 63, fat: 18, baseUnit: 'g' as const },
+  { name: 'Ready-Mix Dosa Batter (per 100 g)', calories: 130, protein: 4.5, carbs: 26, fat: 1.5, baseUnit: 'g' as const },
+  { name: 'Ready-Mix Idli Batter (per 100 g)', calories: 110, protein: 4, carbs: 22, fat: 0.8, baseUnit: 'g' as const },
+  { name: 'Khichiya Papad (Rice Papad, Raw)', calories: 360, protein: 6, carbs: 84, fat: 0.5, baseUnit: 'g' as const },
 ];
 
 export const EXERCISE_MET = [
