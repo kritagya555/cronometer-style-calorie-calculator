@@ -15,7 +15,7 @@ interface IngredientEntry {
   amount: number;
   unit: Unit;
   baseUnit: 'g' | 'ml';
-  sliceWeight?: number;
+  servingWeight?: number;
   cals: number;
   p: number;
   c: number;
@@ -32,7 +32,7 @@ export const RecipeCreator: React.FC<RecipeCreatorProps> = ({ onSave }) => {
       case 'kg': return amount * 10;
       case 'l': return amount * 10;
       case 'tbsp': return (amount * 15) / 100;
-      case 'cup': return (amount * 160) / 100; // 1 cup approx 160g/ml
+      case 'cup': return (amount * 240) / 100; // 1 cup approx 240g/ml
       case 'slice': 
       case 'piece': 
         return (amount * (sliceWeight || 100)) / 100; // default 100g if no weight
@@ -53,7 +53,7 @@ export const RecipeCreator: React.FC<RecipeCreatorProps> = ({ onSave }) => {
       amount: 100, 
       unit: (ing.baseUnit || 'g') as Unit,
       baseUnit: ing.baseUnit || 'g',
-      sliceWeight: ing.sliceWeight,
+      servingWeight: ing.servingWeight,
       cals: ing.calories, 
       p: ing.protein, 
       c: ing.carbs, 
@@ -65,7 +65,7 @@ export const RecipeCreator: React.FC<RecipeCreatorProps> = ({ onSave }) => {
   const updateIngredient = (index: number, amount: number, unit: Unit) => {
     const updated = [...ingredients];
     const baseIng = ALL_MOCK_DATA.find(i => i.name === updated[index].name)!;
-    const multiplier = getMultiplier(amount, unit, baseIng.sliceWeight);
+    const multiplier = getMultiplier(amount, unit, baseIng.servingWeight);
     
     updated[index] = {
       ...updated[index],
@@ -154,7 +154,7 @@ export const RecipeCreator: React.FC<RecipeCreatorProps> = ({ onSave }) => {
                     <option value="tbsp">tbsp</option>
                     <option value="piece">piece</option>
                     <option value="cup">cup</option>
-                    {ing.sliceWeight && <option value="slice">slice</option>}
+                    {ing.servingWeight && <option value="slice">slice</option>}
                   </>
                 ) : (
                   <>

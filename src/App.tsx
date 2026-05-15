@@ -67,6 +67,7 @@ function App() {
   const [exerciseForm, setExerciseForm] = useState({ name: '', duration: 30, calories: 0 });
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState('diary');
+  const [quickLogMode, setQuickLogMode] = useState<'total' | 'packet'>('total');
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     const saved = localStorage.getItem('theme');
     if (saved) return saved as 'light' | 'dark';
@@ -127,10 +128,34 @@ function App() {
   const [foodUnit, setFoodUnit] = useState<'serving' | 'g' | 'ml' | 'tbsp' | 'slice'>('serving');
 
   const addFood = (food: DBFoodItem, quantity: number = 1, unit: string = 'serving') => {
-    let factor = quantity;
-    if (unit === 'tbsp') factor = (quantity * 15) / 100;
-    else if (unit === 'slice') factor = (quantity * (food.sliceWeight || 30)) / 100;
-    else if (unit === 'g' || unit === 'ml') factor = quantity / 100;
+    let factor = 1;
+    
+    // Standard conversion logic:
+    // All DB values are per 100g/ml.
+    // We calculate a multiplier (factor) to apply to these base values.
+    
+    switch (unit) {
+      case 'g':
+      case 'ml':
+        factor = quantity / 100;
+        break;
+      case 'kg':
+      case 'l':
+        factor = (quantity * 1000) / 100;
+        break;
+      case 'tbsp':
+        factor = (quantity * 15) / 100;
+        break;
+      case 'cup':
+        factor = (quantity * 240) / 100;
+        break;
+      case 'slice':
+      case 'piece':
+      case 'serving':
+      default:
+        factor = (quantity * (food.servingWeight || 100)) / 100;
+        break;
+    }
     
     const newEntry: FoodEntry = {
       ...food,
@@ -532,14 +557,17 @@ function App() {
           onSubmit={(e) => {
             e.preventDefault();
             const fd = new FormData(e.currentTarget);
+            const weight = parseFloat(fd.get('weight') as string || '100');
+            const factor = quickLogMode === 'packet' ? (weight / 100) : 1;
+
             const entry: FoodEntry = {
-              id: Math.random().toString(36).substr(2, 9),
+              id: Math.random().toString(36).substring(2, 11),
               name: fd.get('name') as string,
-              calories: parseInt(fd.get('calories') as string),
-              protein: parseInt(fd.get('protein') as string || '0'),
-              carbs: parseInt(fd.get('carbs') as string || '0'),
-              fat: parseInt(fd.get('fat') as string || '0'),
-              servingSize: 'Custom',
+              calories: Math.round(parseFloat(fd.get('calories') as string) * factor),
+              protein: (parseFloat(fd.get('protein') as string || '0') * factor),
+              carbs: (parseFloat(fd.get('carbs') as string || '0') * factor),
+              fat: (parseFloat(fd.get('fat') as string || '0') * factor),
+              servingSize: quickLogMode === 'packet' ? `${weight}g portion` : 'Custom Portion',
               timestamp: selectedDate.getTime(),
               category: 'Custom'
             };
@@ -548,26 +576,55 @@ function App() {
           }}
           className="space-y-4"
         >
+          <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl mb-4">
+             <button 
+               type="button"
+               onClick={() => setQuickLogMode('total')}
+               className={`flex-1 py-2 text-[10px] font-black uppercase rounded-lg transition-all ${quickLogMode === 'total' ? 'bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm' : 'text-slate-400'}`}
+             >
+               Absolute Values
+             </button>
+             <button 
+               type="button"
+               onClick={() => setQuickLogMode('packet')}
+               className={`flex-1 py-2 text-[10px] font-black uppercase rounded-lg transition-all ${quickLogMode === 'packet' ? 'bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm' : 'text-slate-400'}`}
+             >
+               Packet Converter
+             </button>
+          </div>
+
           <div>
             <label className="block text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Food Name</label>
-            <input name="name" required placeholder="e.g. My Secret Shake" className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white" />
+            <input name="name" required placeholder={quickLogMode === 'total' ? "e.g. 1 Plate Momos" : "e.g. Lays Magic Masala"} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white" />
           </div>
-          <div>
-            <label className="block text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Calories (kcal)</label>
-            <input name="calories" type="number" required placeholder="0" className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white font-black" />
+
+          <div className={quickLogMode === 'packet' ? "grid grid-cols-2 gap-4" : ""}>
+             <div>
+                <label className="block text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">
+                  {quickLogMode === 'total' ? 'Total Calories' : 'Calories (per 100g)'}
+                </label>
+                <input name="calories" type="number" step="0.1" required placeholder="0" className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white font-black" />
+             </div>
+             {quickLogMode === 'packet' && (
+               <div>
+                  <label className="block text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Your Portion (g)</label>
+                  <input name="weight" type="number" step="0.1" required placeholder="e.g. 30" className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 dark:text-white font-black" />
+               </div>
+             )}
           </div>
+
           <div className="grid grid-cols-3 gap-3">
             <div>
-              <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 text-center">Protein (g)</label>
-              <input name="protein" type="number" placeholder="0" className="w-full px-3 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white text-center" />
+              <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 text-center">Protein</label>
+              <input name="protein" type="number" step="0.1" placeholder="0" className="w-full px-3 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white text-center" />
             </div>
             <div>
-              <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 text-center">Carbs (g)</label>
-              <input name="carbs" type="number" placeholder="0" className="w-full px-3 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white text-center" />
+              <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 text-center">Carbs</label>
+              <input name="carbs" type="number" step="0.1" placeholder="0" className="w-full px-3 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white text-center" />
             </div>
             <div>
-              <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 text-center">Fat (g)</label>
-              <input name="fat" type="number" placeholder="0" className="w-full px-3 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white text-center" />
+              <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 text-center">Fat</label>
+              <input name="fat" type="number" step="0.1" placeholder="0" className="w-full px-3 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white text-center" />
             </div>
           </div>
           <button type="submit" className="w-full bg-emerald-600 text-white py-4 rounded-2xl font-black shadow-lg shadow-emerald-100 dark:shadow-none active:scale-95 transition-all mt-2">
